@@ -1,0 +1,69 @@
+<section id="navbar">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a
+              style="text-shadow: 2px 2px #f0e9e9"
+              class="navbar-brand"
+              href=""
+            >
+              Navbar
+            </a>
+            <button
+              style="color: rgb(8, 8, 8)"
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto width:100%;">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Voorddlen</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Over Owns</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active">Faq</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/contactadminadmin"
+                    >Contact</a
+                  >
+                </li>
+
+                <% if(name!=='hello'){ %>
+                <li class="nav-item">
+                  <a class="nav-link active"> Welcome <%= name %> </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/logout">logout</a>
+                </li>
+                <% } else{ %>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/login">Login</a>
+                </li>
+
+                <% }%>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>

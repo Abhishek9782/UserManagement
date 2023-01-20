@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container" style="margin-top: 100px">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <h2 class="mb-3" style="text-align: center">Please Fill This Form</h2>
+          <form action="/registration" method="post">
+            <div id="name1"></div>
+            <input
+              type="text"
+              class="form-control mb-3"
+              name="name"
+              id="name"
+              placeholder="Username"
+            />
+
+            <div id="pass1"></div>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="pass"
+              placeholder="Password"
+              value=""
+              onkeyup="match(event)"
+            />
+            <span class="eye_button" id="showpass" onclick="passwordshow()">
+              <i class="fa-solid fa-eye"></i
+            ></span>
+
+            <div id="passr1"></div>
+            <input
+              type="text"
+              class="form-control mb-3"
+              name="password123"
+              id="passr"
+              placeholder="Re-Password"
+              onkeyup="rematch(event)"
+            />
+            <span class="rematch_password mt-3" id="rematch-pass"></span>
+
+            <div id="mobile1"></div>
+            <input
+              type="text"
+              class="form-control mb-3"
+              name="mobile"
+              id="mobile"
+              placeholder="Mobile No."
+            />
+            <input
+              type="email"
+              placeholder="Enter Your Email "
+              class="form-control"
+              name="email"
+              id="user-mail"
+            />
+            <div id="mail_error"></div>
+
+            <button
+              type="submit"
+              class="form-control btn btn-success mt-3"
+              onclick="return abhi()"
+            >
+              Sumbit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function abhi() {
+        let email = document.getElementById("user-mail").value;
+        let a = document.getElementById("name").value;
+        let b = document.getElementById("pass").value;
+        let c = document.getElementById("passr").value;
+        let d = document.getElementById("mobile").value;
+
+        if (a == "") {
+          document.getElementById("name").style.border = "1px solid red";
+          document.getElementById("name1").innerText = "Please Enter Your Name";
+          return false;
+        }
+        if (a.trim() == "") {
+          document.getElementById("name").style.border = "1px solid red";
+          document.getElementById("name1").innerText =
+            "Please Enter valid Name";
+          return false;
+        }
+        if (a.length < 8) {
+          document.getElementById("name").style.border = "1px solid red";
+          document.getElementById("name1").innerText =
+            "Please Enter 8-charecters Name";
+          return false;
+        }
+
+        if (b == "") {
+          document.getElementById("pass").style.border = "1px solid red";
+          document.getElementById("pass1").innerText =
+            "Please Enter Your Password";
+          return false;
+        }
+        if (b.trim() == "") {
+          document.getElementById("pass").style.border = "1px solid red";
+          document.getElementById("pass1").innerText =
+            "Please Enter Your Valid Password";
+          return false;
+        }
+        if (c == "") {
+          document.getElementById("passr").style.border = "1px solid red";
+          document.getElementById("passr1").innerText =
+            "Please Enter Your Password";
+          return false;
+        }
+
+        if (d == "") {
+          document.getElementById("mobile").style.border = "1px solid red";
+          document.getElementById("mobile1").innerText =
+            "Please Enter Your Mobile NO.";
+          return false;
+        }
+        if (d.length < 10) {
+          document.getElementById("mobile").style.border = "1px solid red";
+          document.getElementById("mobile1").innerText =
+            "Please Enter Your 10-Mobile NO.";
+          return false;
+        }
+        if (d.length > 10) {
+          document.getElementById("mobile").style.border = "1px solid red";
+          document.getElementById("mobile1").innerText =
+            "Please Enter Your 10-Mobile NO.";
+          return false;
+        }
+        if (b.value !== c.value) {
+          alert("please Match your password");
+        }
+        if (email == "") {
+          document.getElementById("mail_error").innerText =
+            "Please Fill Valid E-mail";
+          document.getElementById("user-mail").style.border = "1px solid red";
+          return false;
+        }
+      }
+
+      function match(event) {
+        let a = document.getElementById("pass").attributes;
+        let value = Array.from(a);
+        const final = (value[5].value = event.target.value);
+      }
+      function rematch(event) {
+        const uperpass = document.getElementById("pass").value;
+        if (uperpass == event.target.value) {
+          document.getElementById("rematch-pass").style.visibility = "visible";
+          document.getElementById("rematch-pass").style.color = "green";
+          document.getElementById("rematch-pass").innerText =
+            "Password matched";
+        } else {
+          document.getElementById("rematch-pass").style.visibility = "visible";
+          document.getElementById("rematch-pass").style.color = "red";
+          document.getElementById("rematch-pass").innerText =
+            "Password not matched";
+        }
+      }
+
+      function passwordshow() {
+        let a = document.getElementById("pass").attributes;
+        const final = Array.from(a);
+        var change = final[0].value;
+        console.log(change);
+        if (change == "password") {
+          var change = (final[0].value = "none");
+          document.getElementById("showpass").innerHTML =
+            '<i class="fa-regular fa-eye-slash"></i>';
+        } else if (change == "none") {
+          document.getElementById("showpass").innerHTML =
+            ' <i class="fa-solid fa-eye"></i>';
+          var change = (final[0].value = "password");
+        }
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

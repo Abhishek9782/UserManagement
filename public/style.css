@@ -1,0 +1,198 @@
+#navbar {
+  background-color: rgb(82, 211, 211);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#navbar .container ul li {
+  margin-left: 25px;
+}
+#navbar .container ul li:hover {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  text-align: center;
+  height: 40px;
+}
+#banner {
+  margin-top: 50px;
+}
+#navbar .container ul li a {
+  color: black;
+}
+
+#banner .container .pp1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: blueviolet;
+  margin-top: 90px;
+}
+#banner .container .pp2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: -30px;
+}
+#banner .container .bbtn1 {
+  font-size: 30px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+#banner .container .bbtn2 {
+  font-size: 30px;
+  margin-left: 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+#banner .container img {
+  width: 100%;
+  height: 500px;
+  border: 1px solid rgb(208, 244, 250);
+  margin-top: -40px;
+}
+
+#banner .container .bbox {
+  height: 50px;
+  background-color: green;
+  border: 1px solid green;
+  text-align: center;
+  padding-top: 15px;
+  font-weight: bold;
+}
+
+#imgb .container {
+  background-color: rgb(247, 239, 239);
+}
+#headinga h1 {
+  font-size: 70px;
+  text-align: center;
+  margin-top: 100px;
+}
+#headinga .container p {
+  text-align: center;
+}
+#headinga #lastb {
+  margin-top: 80px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  margin-left: 20px;
+}
+
+#midd .container {
+  background-color: bisque;
+  margin-top: 150px;
+  padding-bottom: 100px;
+  border-radius: 20px;
+  margin-bottom: 100px;
+}
+#midd h1 {
+  font-size: 70px;
+  font-weight: bold;
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+#midd .container #borderl {
+  height: 75%;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 100px;
+}
+#midd .container #border2 {
+  height: 75%;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 100px;
+}
+#midd .container #border3 {
+  height: 75%;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 100px;
+}
+#midd .container #borderl img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 240px;
+}
+#midd .container #border2 img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 240px;
+}
+#midd .container #border3 img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 240px;
+}
+
+#midd .container #name {
+  margin-bottom: 180px;
+}
+
+#footer .container p .footerh {
+  font-size: 30px;
+}
+
+#header12 {
+  background-color: aqua;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#footer12 {
+  background-color: aqua;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+#loginpage {
+  position: relative;
+  margin-top: 150px;
+}
+#loginpage #reg {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 110px;
+}
+.contact_footer {
+  background-color: aqua;
+  width: 100%;
+  height: 100px;
+}
+.contact_footer::after {
+  content: "Admin Contact";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  height: 100px;
+}
+.user_contactwith_admin {
+  display: flex;
+  justify-content: center;
+  height: 72vh;
+  align-items: center;
+}
+.user_contactwith_admin > form {
+  width: 60%;
+}
+.rematch_password {
+  margin-bottom: 10px;
+  visibility: none;
+  position: relative;
+  top: -17px;
+}
+.eye_button {
+  position: relative;
+  top: -32px;
+  left: 92%;
+}
