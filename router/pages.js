@@ -7,8 +7,6 @@ const bcrypt = require('bcrypt')
 
 
 
-
-
 //  Middlee Ware 
 function handlelogincheck(req, res, next) {
   if (req.session.isAuth) {
@@ -86,9 +84,11 @@ router.post('/registration', async (req, res) => {
   // const role = 'public'
   const loginRecord = new Reg({ name: name, password: hashpass, password123: hashrepass, mobile: mobile, email: email })
   //  We Are Using there hash method for secure Passowrd
-
-  await loginRecord.save()
   console.log(loginRecord)
+  const tokens = await loginRecord.genrateToken()
+  console.log("route token " + tokens)
+  await loginRecord.save()
+  // console.log(loginRecord._id)
   res.redirect('/login')
 })
 router.post('/login', async (req, res) => {
@@ -98,6 +98,9 @@ router.post('/login', async (req, res) => {
   //!console.log(password)---------------
   //todo: console.log(regRecord.password)----------
   const hashed = await bcrypt.compare(password, hash)
+  // For The genrate token here 
+  const token = await regRecord.genrateToken();
+  console.log(token)
   if (regRecord !== null) {
     if (hashed == true) {
       if (regRecord.status == 'active') {

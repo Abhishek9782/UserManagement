@@ -1,10 +1,13 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-port = 8080
+let port = process.env.PORT;
+
+
 
 //mongoose call 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/NewProject', () => {
+mongoose.connect(process.env.MONGO_URL, () => {
     console.log('Mongoose Connect With Server Port')
 })
 
@@ -13,7 +16,8 @@ const Session = require('express-session')
 app.use(Session({
     secret: 'abhi',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }
 
 }))
 
@@ -45,5 +49,5 @@ app.all('*', (req, res, next) => {
 
 
 app.listen(port, () => {
-    console.log('Server Conncted with Port 5000 ')
+    console.log(`Server Conncted  http://localhost:${port}`)
 })
