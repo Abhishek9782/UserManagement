@@ -4,7 +4,7 @@ const Login = require('../models/loginscema ')
 const Reg = require('../models/regScema')
 const nodemailer = require('nodemailer')
 const bcrypt = require('bcrypt')
-
+const auth = require('../middleware/auth')
 
 
 //  Middlee Ware 
@@ -37,6 +37,8 @@ async function handlecheckrole(req, res, next) {
 let sess = null;
 
 router.get('/', async (req, res) => {
+  // for Cheacking cookies is come in my req
+  // console.log(`here is cookie ${req.cookies.jwttokens}`)
   const bannerRecord = await Banner.findOne()
   if (sess !== null) {
     res.render('index.ejs', { bannerRecord: bannerRecord, name: sess.name })
@@ -57,7 +59,7 @@ router.get('/test', async (req, res) => {
 // more Details ko Show and Hide Krwane ke liye 
 
 
-router.get('/moredetails', handlelogincheck, handlecheckrole, async (req, res) => {
+router.get('/moredetails', auth, handlecheckrole, async (req, res) => {
   const homevalue = await Banner.findOne()
 
   res.render('moredetails', { homevalue: homevalue, name: sess.name, message: sess.message })
@@ -100,7 +102,11 @@ router.post('/login', async (req, res) => {
   const hashed = await bcrypt.compare(password, hash)
   // For The genrate token here 
   const token = await regRecord.genrateToken();
-  console.log(token)
+  res.cookie("jwttokens", token, {
+    expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    httpOnly: true
+
+  })
   if (regRecord !== null) {
     if (hashed == true) {
       if (regRecord.status == 'active') {
@@ -123,18 +129,18 @@ router.post('/login', async (req, res) => {
     res.redirect('/login')
   }
 })
-router.get('/logout', handlelogincheck, (req, res) => {
+router.get('/logout', auth, (req, res) => {
   req.session.destroy()
   sess = null,
     res.redirect('/login')
 })
 
-router.get('/contactadminadmin', handlelogincheck, (req, res) => {
+router.get('/contactadminadmin', auth, (req, res) => {
   let name = sess.name
   res.render('adminmail.ejs', { name })
 })
 
-router.post('/emailsendadmin', handlelogincheck, async (req, res) => {
+router.post('/emailsendadmin', auth, async (req, res) => {
   const { usermail, content } = req.body
   const config = nodemailer.createTransport({
     host: "smtp.gmail.com",

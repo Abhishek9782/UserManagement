@@ -3,6 +3,10 @@ const express = require('express')
 const app = express()
 let port = process.env.PORT;
 
+//  cookie parder use here
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
 
 
 //mongoose call 
